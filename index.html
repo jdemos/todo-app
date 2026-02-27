@@ -7,21 +7,76 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Todos</h1>
+  <div class="app">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Menu</span>
+          <button id="theme-btn" title="Toggle theme">☰</button>
+        </div>
+        <div class="search-box">
+          <span class="icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Search" autocomplete="off" />
+        </div>
+      </div>
 
-    <div class="input-row">
-      <input
-        type="text"
-        id="todo-input"
-        placeholder="What needs to be done?"
-        autocomplete="off"
-      />
-      <button id="add-btn">Add</button>
+      <div class="sidebar-section">
+        <span class="section-label">TASKS</span>
+        <button class="nav-item" data-view="upcoming">
+          <span class="nav-icon">»</span> Upcoming <span class="nav-count" id="count-upcoming">0</span>
+        </button>
+        <button class="nav-item active" data-view="today">
+          <span class="nav-icon">☰</span> Today <span class="nav-count" id="count-today">0</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="section-label">LISTS</span>
+        <div id="lists-container"></div>
+        <button class="nav-item add-item" id="add-list-btn">
+          <span class="nav-icon">+</span> Add New List
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="section-label">TAGS</span>
+        <div id="tags-container" class="tags-row"></div>
+        <button class="tag-pill add-tag-pill" id="add-tag-btn">+ Add Tag</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button id="settings-btn" class="nav-item"><span class="nav-icon">⚙</span> Settings</button>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+      <span id="mobile-title" style="font-weight:700;font-size:1.1rem;">Today</span>
     </div>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <ul id="todo-list"></ul>
-    <p id="empty-msg">No todos yet — add one above!</p>
+    <!-- Center Panel -->
+    <main class="main-panel">
+      <div class="main-header">
+        <h1 id="view-title">Today</h1>
+        <span class="task-count-badge" id="task-count-badge">0</span>
+      </div>
+      <button class="add-task-btn" id="add-task-btn">
+        <span>+</span> Add New Task
+      </button>
+      <div id="task-list" class="task-list"></div>
+      <p id="empty-msg" class="empty-msg">No tasks yet — add one above!</p>
+    </main>
+
+    <!-- Right Detail Panel -->
+    <aside class="detail-panel" id="detail-panel">
+      <div class="detail-content" id="detail-content">
+        <div class="detail-placeholder">Select a task to view details</div>
+      </div>
+    </aside>
   </div>
 
   <script src="app.js"></script>
